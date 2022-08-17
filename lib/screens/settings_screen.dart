@@ -1,3 +1,6 @@
+import 'package:blupe/data/settings_data.dart';
+import 'package:blupe/model/settings_model.dart';
+import 'package:blupe/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +13,14 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  List<SettingsModel> settingsList = <SettingsModel>[];
+  var setting;
+  @override
+  void initState() {
+    super.initState();
+    settingsList = getSettings();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,9 +88,71 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
             ),
           )),
-          Expanded(child: Container()),
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(7.5, 5, 7.5, 0),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: TextField(
+                          style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                          maxLines: 1,
+                          cursorColor: Colors.blueGrey,
+                          decoration: InputDecoration(
+                            isCollapsed: true,
+                            filled: true,
+                            fillColor: Colors.grey.shade200,
+                            prefixIcon: const Icon(Icons.search, size: 25),
+                            counterText: "",
+                            hintText: 'Search Settings',
+                            hintStyle: const TextStyle(fontSize: 18),
+                            contentPadding: const EdgeInsets.all(15),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
+                            ),
+                          ),
+                          onChanged: searchTitle,
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: settingsList.length,
+                            itemBuilder: ((context, index) {
+                              setting = settingsList[index];
+                              return CustomListTile(
+                                prefixIcon: setting.prefixIcon,
+                                myTitle: setting.myTitle.toString(),
+                                trailingIcon: setting.trailingIcon,
+                              );
+                            })),
+                      )
+                    ],
+                  ),
+                )),
+          )
         ],
       ),
     );
+  }
+
+  void searchTitle(String query) {
+    var suggestions = settingsList.where((note) {
+      final settingsTitle = setting.myTitle.toLowerCase();
+      final input = query.toLowerCase();
+      return settingsTitle.contains(input);
+    }).toList();
+    setState(() => settingsList = suggestions);
   }
 }
