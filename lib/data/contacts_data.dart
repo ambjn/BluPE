@@ -1,6 +1,6 @@
 import 'package:blupe/model/contacts_model.dart';
 
-List<ContactsModel> getCategories() {
+List<ContactsModel> getContacts() {
   List<ContactsModel> categories = [];
   ContactsModel contactsModel = ContactsModel();
 

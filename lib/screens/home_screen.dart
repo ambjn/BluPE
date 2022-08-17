@@ -1,3 +1,5 @@
+import 'package:blupe/data/contacts_data.dart';
+import 'package:blupe/model/contacts_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<ContactsModel> contactsList = <ContactsModel>[];
+  @override
+  void initState() {
+    super.initState();
+    contactsList = getContacts();
+  }
+
   int _selectedIndex = 0;
   int _currentTab = 0;
   @override
