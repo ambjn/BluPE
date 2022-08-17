@@ -1,3 +1,4 @@
+import 'package:blupe/screens/home_screen.dart';
 import 'package:blupe/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
+        GetPage(name: '/home', page: () => HomeScreen()),
       ],
     );
   }

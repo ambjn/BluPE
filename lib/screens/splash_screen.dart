@@ -1,4 +1,6 @@
+import 'package:blupe/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
@@ -62,7 +64,7 @@ class SplashScreen extends StatelessWidget {
                 width: 180.0,
                 height: 50.0,
                 child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => Get.to(() => HomeScreen()),
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.indigo.shade500),
