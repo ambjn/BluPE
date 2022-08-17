@@ -1,5 +1,6 @@
 import 'package:blupe/data/contacts_data.dart';
 import 'package:blupe/model/contacts_model.dart';
+import 'package:blupe/screens/settings_screen.dart';
 import 'package:blupe/widgets/custom_contacts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -126,12 +127,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                       )
                                     ],
                                   ),
-                                  SizedBox(width: 25),
+                                  const SizedBox(width: 25),
                                   const VerticalDivider(
                                     color: Colors.grey,
                                     thickness: 2,
                                   ),
-                                  SizedBox(width: 25),
+                                  const SizedBox(width: 25),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: const [
@@ -208,25 +209,28 @@ class _HomeScreenState extends State<HomeScreen> {
         }),
         currentIndex: _currentTab,
         enableFeedback: true,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(
+        items: [
+          const BottomNavigationBarItem(
+              icon: const Icon(
                 Icons.dashboard,
               ),
               label: 'Dashboard\n'),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(
                 Icons.qr_code,
               ),
               label: 'Scan Receipt\n'),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(
                 Icons.wallet,
               ),
               label: 'Send &\nRequest'),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
+              icon: GestureDetector(
+                onTap: () => Get.to(() => SettingScreen(myName: widget.name)),
+                child: const Icon(
+                  Icons.settings,
+                ),
               ),
               label: 'Settings\n'),
         ],
