@@ -2,6 +2,7 @@ import 'package:blupe/data/contacts_data.dart';
 import 'package:blupe/model/contacts_model.dart';
 import 'package:blupe/widgets/custom_contacts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key, required this.name}) : super(key: key);
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Expanded(
-              flex: 2,
+              flex: 3,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(7.5, 5, 7.5, 0),
                 child: Container(
@@ -40,22 +41,32 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       const SizedBox(height: 60),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.grey.shade700,
+                            ),
+                            onPressed: () => Get.back(),
+                          ),
                           Icon(
                             Icons.notifications_active,
                             color: Colors.grey.shade700,
                           ),
-                          const SizedBox(width: 20),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          const SizedBox(width: 20),
-                          Icon(
-                            Icons.cabin,
-                            color: Colors.grey.shade700,
+                          SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image.network(
+                                    "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+                                    fit: BoxFit.cover)),
                           ),
                           const SizedBox(width: 20),
                           Row(
@@ -64,8 +75,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text("Hi ${widget.name},"),
-                                  const Text("Here's your spending dashboard")
+                                  Text(
+                                    "Hi ${widget.name},",
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Text(
+                                    "Here's your spending dashboard",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  )
                                 ],
                               ),
                             ],
@@ -88,14 +109,47 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Column(
-                                    children: [Text("data"), Text("data")],
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: const [
+                                      Text(
+                                        '\$204.5',
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        "Your Balance",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300),
+                                      )
+                                    ],
                                   ),
+                                  SizedBox(width: 25),
                                   const VerticalDivider(
                                     color: Colors.grey,
                                     thickness: 2,
                                   ),
+                                  SizedBox(width: 25),
                                   Column(
-                                    children: [Text("data"), Text("data")],
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: const [
+                                      Text(
+                                        '30',
+                                        style: TextStyle(
+                                            color: Colors.blue,
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        "Last Days",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300),
+                                      )
+                                    ],
                                   )
                                 ],
                               ),
@@ -103,11 +157,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
                       Row(
-                        children: [Text("Send Again")],
+                        children: const [
+                          Text(
+                            "Send Again",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: SingleChildScrollView(

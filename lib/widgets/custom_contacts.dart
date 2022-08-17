@@ -27,9 +27,11 @@ class CustomContacts extends StatelessWidget {
         ),
         Container(
             alignment: Alignment.center,
-            child: Text(
-              categoryName,
-            ))
+            child: Text(categoryName,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                )))
       ]),
     );
   }
