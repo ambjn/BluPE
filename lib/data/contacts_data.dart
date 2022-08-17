@@ -13,7 +13,7 @@ List<ContactsModel> getContacts() {
   contactsModel = ContactsModel();
   contactsModel.contactName = "Adarsh";
   contactsModel.imageUrl =
-      "'https://www.socialketchup.in/wp-content/uploads/2020/05/fi-vill-JOHN-DOE.jpg";
+      "https://www.socialketchup.in/wp-content/uploads/2020/05/fi-vill-JOHN-DOE.jpg";
   categories.add(contactsModel);
 
   contactsModel = ContactsModel();

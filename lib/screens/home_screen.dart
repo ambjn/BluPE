@@ -1,5 +1,6 @@
 import 'package:blupe/data/contacts_data.dart';
 import 'package:blupe/model/contacts_model.dart';
+import 'package:blupe/widgets/custom_contacts.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -107,6 +108,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [Text("Send Again")],
                       ),
                       const SizedBox(height: 20),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: SingleChildScrollView(
+                            child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 70,
+                                child: ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: contactsList.length,
+                                    itemBuilder: ((context, index) {
+                                      return CustomContacts(
+                                        imageUrl: contactsList[index].imageUrl,
+                                        categoryName:
+                                            contactsList[index].contactName,
+                                      );
+                                    })),
+                              ),
+                            ],
+                          ),
+                        )),
+                      )
                     ],
                   ),
                 ),
