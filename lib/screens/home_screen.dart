@@ -213,22 +213,22 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(
                 Icons.dashboard,
               ),
-              label: 'Dashboard'),
+              label: 'Dashboard\n'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.qr_code,
               ),
-              label: 'Scan Receipt'),
+              label: 'Scan Receipt\n'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.wallet,
               ),
-              label: 'Send & Request'),
+              label: 'Send &\nRequest'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,
               ),
-              label: 'Settings'),
+              label: 'Settings\n'),
         ],
       ),
     );
