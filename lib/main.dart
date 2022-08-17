@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => const SplashScreen()),
+      ],
     );
   }
 }
