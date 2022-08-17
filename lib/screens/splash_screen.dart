@@ -64,9 +64,20 @@ class SplashScreen extends StatelessWidget {
                 width: 180.0,
                 height: 50.0,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => HomeScreen(
-                          name: nameController.text,
-                        )),
+                    onPressed: () {
+                      if (nameController.text.isEmpty) {
+                        Get.snackbar(
+                          "Error",
+                          "Please Enter Name",
+                          icon: const Icon(Icons.error, color: Colors.red),
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
+                      } else {
+                        Get.to(() => HomeScreen(
+                              name: nameController.text,
+                            ));
+                      }
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.indigo.shade500),
